@@ -1,0 +1,17 @@
+# output files
+/node_modules
+/coverage
+/typechain
+/typechain-types
+/nx-errors
+/cache
+/artifacts
+
+coverage.json
+
+
+# config files
+.env
+
+# etc
+.DS_Store

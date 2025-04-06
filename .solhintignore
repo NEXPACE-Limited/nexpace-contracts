@@ -1,0 +1,4 @@
+node_modules
+/artifacts
+contracts/mock
+contracts/Bridge/libs

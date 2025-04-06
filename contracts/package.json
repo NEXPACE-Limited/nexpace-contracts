@@ -1,0 +1,24 @@
+{
+  "name": "@projecta/nexpace-contracts",
+  "version": "0.10.8",
+  "description": "Nexpace Contracts",
+  "files": [
+    "**/*.sol",
+    "!mock/internal/**",
+    "artifacts",
+    "!artifacts/contracts/mock/internal/**"
+  ],
+  "scripts": {
+    "preversion": "[ -n \"$BUMP_FROM_PROJECT_ROOT_DIRECTORY\" ]"
+  },
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "@chainlink/contracts": "^0.8.0",
+    "@openzeppelin/contracts": "=4.8.1",
+    "@openzeppelin/contracts-upgradeable": "=4.9.2",
+    "@projecta/util-contracts": "git+ssh://git@github.com:nexpace-admin/util-contracts.git",
+    "@projecta/min-proxy": "git+ssh://git@github.com:nexpace-admin/min-proxy.git",
+    "@projecta/multisig-contracts": "git+ssh://git@github.com:nexpace-admin/multisig-contract.git"
+  }
+}
