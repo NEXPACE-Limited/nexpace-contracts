@@ -17,7 +17,7 @@
     "@chainlink/contracts": "^0.8.0",
     "@openzeppelin/contracts": "=4.8.1",
     "@openzeppelin/contracts-upgradeable": "=4.9.2",
-    "@projecta/util-contracts": "git+ssh://git@github.com:NEXPACE-Limited/util-contracts.git#v1.0.0",
+    "@projecta/util-contracts": "git+ssh://git@github.com:NEXPACE-Limited/util-contracts.git#v1.0.1",
     "@projecta/min-proxy": "git+ssh://git@github.com:NEXPACE-Limited/min-proxy.git#v1.0.0",
     "@projecta/multisig-contracts": "git+ssh://git@github.com:NEXPACE-Limited/multisig-contract.git#v1.0.0"
   }
