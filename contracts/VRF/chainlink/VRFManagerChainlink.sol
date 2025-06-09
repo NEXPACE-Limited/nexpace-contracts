@@ -5,11 +5,12 @@ import { VRFCoordinatorV2_5 } from "@chainlink/contracts/src/v0.8/dev/vrf/VRFCoo
 import { VRFV2PlusClient } from "@chainlink/contracts/src/v0.8/dev/vrf/libraries/VRFV2PlusClient.sol";
 import { VRFManager } from "../VRFManager.sol";
 import { VRFConsumerBaseV2Plus } from "./VRFConsumerBaseV2Plus.sol";
+import { NextOwnablePausable } from "@projecta/util-contracts/contracts/access/NextOwnablePausable.sol";
 
 /// @title VRFManagerChainlink - Manage VRF Request and Requester using Chainlink
 /// @dev Main feature
 ///      - Allows for the management of VRF requests using the Chainlink
-contract VRFManagerChainlink is VRFConsumerBaseV2Plus, VRFManager {
+contract VRFManagerChainlink is VRFConsumerBaseV2Plus, VRFManager, NextOwnablePausable {
     struct RequestConfig {
         bytes32 keyHash;
         uint256 subId;
@@ -67,7 +68,7 @@ contract VRFManagerChainlink is VRFConsumerBaseV2Plus, VRFManager {
     }
 
     /// @notice Top-up all amount of link token to use VRF
-    function topUpSubscription() external onlyOwner {
+    function topUpSubscription() external whenExecutable {
         _topUpSubscription();
     }
 
