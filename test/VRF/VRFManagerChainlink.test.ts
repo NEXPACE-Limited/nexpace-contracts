@@ -232,7 +232,7 @@ describe("VRFManagerChainlink", function () {
     it("should be reverted when not called by the owner", async function () {
       const { vrfManagerChainlink, alice } = await loadFixture(fixture);
       await expect(vrfManagerChainlink.connect(alice).topUpSubscription()).to.be.revertedWith(
-        nxErrors.Ownable.notOwner
+        nxErrors.executorForbidden
       );
     });
   });
