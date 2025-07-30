@@ -5,6 +5,7 @@ import "@nomicfoundation/hardhat-toolbox";
 const config: HardhatUserConfig = {
   networks: {
     hardhat: {
+      initialDate: "1971-01-01T00:00:00.000Z",
       allowUnlimitedContractSize: true,
       accounts: {
         count: 40,

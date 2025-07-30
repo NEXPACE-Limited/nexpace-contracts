@@ -11,6 +11,7 @@ import { CreatorFactory } from "../../Creator/CreatorFactory.sol";
 import { NXPCDistributor } from "../../NXPC/NXPCDistributor.sol";
 import { NXPCAmountManager } from "../../NXPC/NXPCAmountManager.sol";
 import { ItemIssuance } from "../../ItemIssuance/ItemIssuance.sol";
+import { ContributionRewardDistributor } from "../../ContributionRewardDistributor/ContributionRewardDistributor.sol";
 
 interface IMockFake {
     function fake() external;
@@ -71,6 +72,16 @@ contract MockNXPCAmountManagerMetaTransactionFakeCoverage is IMockFake, NXPCAmou
 }
 
 contract MockItemIssuanceMetaTransactionFakeCoverage is IMockFake, ItemIssuance(address(1), address(1), address(1)) {
+    function fake() external view override {
+        assert(_msgData().length == msg.data.length);
+        assert(_msgSender() == msg.sender);
+    }
+}
+
+contract MockContributionRewardDistributorMetaTransactionFakeCoverage is
+    IMockFake,
+    ContributionRewardDistributor(address(1), address(1), 0)
+{
     function fake() external view override {
         assert(_msgData().length == msg.data.length);
         assert(_msgSender() == msg.sender);
