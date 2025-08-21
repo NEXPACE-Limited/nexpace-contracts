@@ -76,6 +76,8 @@ export default {
     invalidLength: /^CreatorWalletLogicUpgradeable\/invalidLength: (length of to and tokenIds must be same)/,
     invalidAmount: /^CreatorWalletLogicUpgradeable\/invalidAmount: (failed to transfer NXPC)/,
     validAddress: /^CreatorWalletLogicUpgradeable\/validAddress: (couldn't be zero address)/,
+    deprecated:
+      /^CreatorWalletLogicUpgradeable\/deprecated: (use requestItemIssuance\(uint24,uint96,uint256,uint256\))/,
   },
   CreatorTokenControllerUpgradeable: {
     notEnoughFund: /^CreatorTokenControllerUpgradeable\/notEnoughFund: (too large amount was requested)/,

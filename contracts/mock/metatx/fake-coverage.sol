@@ -3,6 +3,7 @@ pragma solidity 0.8.19;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { CreatorWallet } from "../../Creator/CreatorWallet/CreatorWallet.sol";
+import { CreatorWalletV2 } from "../../Creator/CreatorWalletV2/CreatorWalletV2.sol";
 import { INextMeso } from "../../Creator/interfaces/INextMeso.sol";
 import { ICreatorFactory } from "../../Creator/interfaces/ICreatorFactory.sol";
 import { Commission } from "../../Commission/Commission.sol";
@@ -81,6 +82,16 @@ contract MockItemIssuanceMetaTransactionFakeCoverage is IMockFake, ItemIssuance(
 contract MockContributionRewardDistributorMetaTransactionFakeCoverage is
     IMockFake,
     ContributionRewardDistributor(address(1), address(1), 0)
+{
+    function fake() external view override {
+        assert(_msgData().length == msg.data.length);
+        assert(_msgSender() == msg.sender);
+    }
+}
+
+contract MockCreatorWalletV2MetaTransactionFakeCoverage is
+    CreatorWalletV2(address(1), INextMeso(address(1)), ICreatorFactory(address(1))),
+    IMockFake
 {
     function fake() external view override {
         assert(_msgData().length == msg.data.length);
