@@ -10,14 +10,14 @@ import { SelfCallUpgradeable } from "@projecta/multisig-contracts/contracts/comm
 import { ItemIssuance } from "../../ItemIssuance/ItemIssuance.sol";
 import { ICreatorFactory } from "../interfaces/ICreatorFactory.sol";
 import { INextMeso } from "../interfaces/INextMeso.sol";
-import { CreatorTokenControllerUpgradeable } from "../utils/CreatorTokenControllerUpgradeable.sol";
+import { CreatorTokenControllerUpgradeableV2 } from "../utils/CreatorTokenControllerUpgradeableV2.sol";
 
 /// @title CreatorWalletLogicUpgradeable - A contract that defines the functions that CreatorWallet can call
 /// @dev Main feature
 ///      - allocate various assets (ERC20, ERC721, ERC1155) to DAppWallet or withdraw them externally
 ///      - send a request to ItemIssuance to issue an item
 ///      - Upgradeable: The administrator can add functions that the creator can use.
-contract CreatorWalletLogicUpgradeableV2 is Initializable, SelfCallUpgradeable, CreatorTokenControllerUpgradeable {
+contract CreatorWalletLogicUpgradeableV2 is Initializable, SelfCallUpgradeable, CreatorTokenControllerUpgradeableV2 {
     using SafeERC20 for IERC20;
 
     /// @notice MSU currency
@@ -74,7 +74,7 @@ contract CreatorWalletLogicUpgradeableV2 is Initializable, SelfCallUpgradeable, 
     /// @param dAppId A id of dApp
     /// @param amount A amount of ERC20 token
     function allocateERC20(IERC20 token, uint32 dAppId, uint256 amount) external isSelfCall onlyOwnedDApp(dAppId) {
-        _allocateERC20(token, creatorFactory.dAppAddress(dAppId), amount);
+        _transferERC20(token, creatorFactory.dAppAddress(dAppId), amount);
     }
 
     /// @notice Allocate ERC20 tokens to creator-owned dapp accounts
@@ -86,7 +86,7 @@ contract CreatorWalletLogicUpgradeableV2 is Initializable, SelfCallUpgradeable, 
         address dAppAddress,
         uint256 amount
     ) external override isSelfCall onlyOwnedDApp(creatorFactory.dAppId(dAppAddress)) {
-        _allocateERC20(token, creatorFactory.dAppAddress(creatorFactory.dAppId(dAppAddress)), amount);
+        _transferERC20(token, creatorFactory.dAppAddress(creatorFactory.dAppId(dAppAddress)), amount);
     }
 
     /// @notice Records the allocation of items with their hashed data to creator-owned dapp accounts
@@ -101,7 +101,7 @@ contract CreatorWalletLogicUpgradeableV2 is Initializable, SelfCallUpgradeable, 
     /// @param account A address of account of recipient
     /// @param amount A amount of ERC20 token
     function withdrawERC20(IERC20 token, address account, uint256 amount) external override isSelfCall {
-        _withdrawERC20(token, account, amount);
+        _transferERC20(token, account, amount);
     }
 
     /// @notice Transfer native token to any address

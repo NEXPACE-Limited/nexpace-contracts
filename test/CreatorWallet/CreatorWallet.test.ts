@@ -1874,4 +1874,20 @@ describe("Creator Contract", () => {
       );
     });
   });
+
+  describe("MockCreatorTokenControllerUpgradeableV2 - onlyInitializing", () => {
+    it("Revert - when not called initializing", async () => {
+      const MockCreatorTokenControllerUpgradeableV2 = await ethers.getContractFactory(
+        "MockCreatorTokenControllerUpgradeableV2"
+      );
+      const mockCreatorTokenControllerUpgradeableV2 = await MockCreatorTokenControllerUpgradeableV2.deploy();
+      await mockCreatorTokenControllerUpgradeableV2.initialize();
+      await expect(mockCreatorTokenControllerUpgradeableV2.f()).to.be.revertedWith(
+        nxErrors.Initializable.notInitializing
+      );
+      await expect(mockCreatorTokenControllerUpgradeableV2.g()).to.be.revertedWith(
+        nxErrors.Initializable.notInitializing
+      );
+    });
+  });
 });
