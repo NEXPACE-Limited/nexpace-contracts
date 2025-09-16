@@ -7,6 +7,7 @@ describe("meta-transaction fake coverage", function () {
     await Promise.all(
       [
         "CreatorWallet",
+        "CreatorWalletV2",
         "Commission",
         "DAppRewardAllocationWallet",
         "CreatorFactory",
