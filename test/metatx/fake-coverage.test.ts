@@ -13,6 +13,7 @@ describe("meta-transaction fake coverage", function () {
         "NXPCDistributor",
         "NXPCAmountManager",
         "ItemIssuance",
+        "ContributionRewardDistributor",
       ].map(async (n, i) => {
         const factory = await ethers.getContractFactory(`Mock${n}MetaTransactionFakeCoverage`, signers[i]);
         const fake = (await factory.deploy()) as IMockFake;

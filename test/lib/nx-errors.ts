@@ -164,4 +164,11 @@ export default {
     invalidAddress: /^ItemIssuance\/invalidAddress:/,
     invalidUniverse: /^ItemIssuance\/invalidUniverse:/,
   },
+  ContributionRewardDistributor: {
+    invalidAddress: /^ContributionRewardDistributor\/invalidAddress:/,
+    transferFailed: /^ContributionRewardDistributor\/transferFailed:/,
+    alreadyDistributed: /^ContributionRewardDistributor\/alreadyDistributed:/,
+    invalidWeek: /^ContributionRewardDistributor\/invalidWeek:/,
+    invalidDate: /^ContributionRewardDistributor\/invalidDate:/,
+  },
 };

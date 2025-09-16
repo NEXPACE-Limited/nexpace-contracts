@@ -5,6 +5,10 @@
     "func-visibility": ["warn", { "ignoreConstructors": true }],
     "not-rely-on-time": "off",
     "reason-string": ["warn", { "maxLength": 100 }],
-    "no-empty-blocks": "off"
+    "no-empty-blocks": "off",
+    "custom-errors": "off",
+    "immutable-vars-naming": "off",
+    "explicit-types": "off",
+    "gas-custom-errors": "off"
   }
 }
